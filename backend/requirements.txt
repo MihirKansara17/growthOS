@@ -1,0 +1,12 @@
+fastapi>=0.110.0
+uvicorn[standard]>=0.28.0
+sqlalchemy>=2.0.28
+pydantic>=2.6.4
+pydantic-settings>=2.2.1
+pandas>=2.2.1
+numpy>=1.26.4
+scikit-learn>=1.4.1
+requests>=2.31.0
+python-dotenv>=1.0.1
+psycopg2-binary>=2.9.9
+pytest>=8.0.0

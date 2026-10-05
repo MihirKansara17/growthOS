@@ -1,0 +1,1845 @@
+GROWTHOS
+
+MASTER PROJECT DOCUMENT
+
+AI Decision Intelligence for Indian Retail Businesses
+
+From business data → diagnosis → prediction → simulation → recommendation → measurement
+
+Project identityGrowthOS is proposed as a domain-specific, AI-assisted decision-intelligence platform for digitally active and growing Indian retail businesses. It is designed to go beyond dashboards: the system should explain why business performance changed, identify risks and opportunities, predict likely outcomes, simulate decisions, recommend evidence-backed actions, and measure the results.
+
+Attribute
+
+Decision
+
+Primary domain
+
+Indian retail / multi-store retail
+
+Primary users
+
+Growing retailers, digitally active SMBs, store/operations managers
+
+Core promise
+
+Tell the merchant what happened, why it happened, what may happen next, and what to do
+
+AI strategy
+
+Use foundation models through an API such as OpenRouter; own the domain tools, analytics, evidence and guardrails
+
+Primary stack
+
+React + Vite + TypeScript, FastAPI + Python, PostgreSQL, Pandas/NumPy, scikit-learn; LLM API
+
+Project positioning
+
+Hackathon project + serious personal portfolio project + potential product prototype
+
+Development principle
+
+Build a reliable vertical slice first; add intelligence incrementally
+
+Master version — Product, Technical Architecture, AI/ML Strategy, Features, Development Approach and Roadmap
+
+Document Status and Scope
+
+This master document expands the existing GrowthOS project guide into a more ambitious domain-specific product direction. The original guide establishes GrowthOS as a proposed merchant intelligence platform with a React/Vite prototype and sample data, while FastAPI, PostgreSQL, production analytics, ML, integrations and secure AI workflows remain development work. This document preserves that distinction and adds a proposed V2 product direction.
+
+Status
+
+Meaning
+
+Existing / demonstrated
+
+React/Vite frontend prototype and earlier dashboard UI using sample/demo data.
+
+Planned foundation
+
+FastAPI API, PostgreSQL persistence, validated imports, authentication, authorization and production analytics.
+
+Proposed V2 intelligence
+
+Root-cause engine, opportunity engine, inventory intelligence, scenario simulation, health score and evidence graph.
+
+Proposed AI layer
+
+LLM accessed through an API such as OpenRouter with controlled tools and structured outputs.
+
+Future / optional
+
+Broad third-party integrations, autonomous actions, advanced deep learning, enterprise-scale deployment.
+
+ImportantThe project should never present planned capabilities as already implemented. During development, update the status of every feature. A technically ambitious project is stronger when its claims are precise.
+
+1. Executive Vision
+
+1.1 The one-line idea
+
+GrowthOS is an AI-assisted decision-intelligence platform that turns retail transaction, customer, product and inventory data into evidence-backed business decisions.
+
+1.2 The core loop
+
+DATA → OBSERVE → DIAGNOSE → PREDICT → SIMULATE → RECOMMEND → ACT → MEASURE
+
+The product should not be positioned as a generic AI chatbot or another dashboard. Its purpose is to close the loop between business data and business action.
+
+1.3 Product thesis
+
+Most merchants can see numbers but struggle to interpret the drivers behind them.
+
+Business decisions often involve trade-offs: revenue versus margin, discount versus inventory, acquisition versus retention.
+
+AI is valuable when it reduces the effort needed to investigate and decide, not when it merely generates text.
+
+The source of truth should remain the merchant's structured data and deterministic analytics.
+
+The LLM should operate as an interaction, reasoning and explanation layer over approved tools.
+
+Every important recommendation should be inspectable: evidence, time window, assumptions and confidence.
+
+2. Why GrowthOS Is Needed
+
+The original project guide identifies fragmented data, time-consuming reporting, weak diagnosis, reactive decision-making and limited analytics expertise as the core problem. The domain-specific version sharpens this problem around retail.
+
+Merchant question
+
+Typical basic system
+
+GrowthOS goal
+
+How much did I sell?
+
+Shows revenue.
+
+Shows revenue, comparison and trend.
+
+Why did revenue fall?
+
+Usually requires manual analysis.
+
+Decompose change and trace likely drivers.
+
+What should I fix first?
+
+No prioritization.
+
+Rank issues by impact, confidence and effort.
+
+Which customers matter?
+
+Customer list.
+
+RFM, retention, value and opportunity segments.
+
+Which products are risky?
+
+Inventory count.
+
+Demand velocity, forecast and stockout risk.
+
+Should I discount?
+
+Manual judgment.
+
+Simulate revenue, margin and inventory trade-offs.
+
+What should I do today?
+
+No unified answer.
+
+Business brief with prioritized actions.
+
+Why should I trust this?
+
+Often unclear.
+
+Evidence graph with supporting metrics.
+
+2.1 Target customer
+
+The initial product should not attempt to serve every shop. The strongest target is a digitally active or growing retail business that already generates structured transaction data and has enough product/customer history to benefit from analytics.
+
+Fashion and lifestyle retail
+
+Electronics and accessories
+
+Footwear
+
+Cosmetics and beauty retail
+
+Small multi-store chains
+
+Digitally active local retailers
+
+A narrow first domain is deliberate. It makes the schema, business rules, demo dataset, metrics, recommendations and evaluation tractable.
+
+3. Product Positioning
+
+3.1 Recommended positioning
+
+RecommendedGrowthOS — AI Decision Intelligence for Indian Retail. It helps growing retailers understand performance, diagnose problems, anticipate risks, simulate decisions and prioritize actions using their own business data.
+
+3.2 What GrowthOS is not
+
+Not a replacement for a POS system.
+
+Not an accounting package.
+
+Not merely a BI dashboard.
+
+Not a generic ChatGPT wrapper.
+
+Not an autonomous marketing bot.
+
+Not a claim that AI can guarantee revenue growth.
+
+3.3 Competitive differentiation
+
+Domain-specific retail reasoning instead of generic charts.
+
+Root-cause analysis instead of only descriptive reporting.
+
+Decision simulation instead of only prediction.
+
+Evidence-linked AI instead of unsupported generated answers.
+
+Action prioritization instead of insight overload.
+
+Closed-loop measurement after actions.
+
+Security and tenant isolation designed into the architecture.
+
+4. Product Intelligence Architecture
+
+GROWTHOS              Retail Decision Intelligence                              │                              ▼                      MERCHANT COMMAND CENTER                              │            ┌─────────────────┼─────────────────┐            ▼                 ▼                 ▼         OBSERVE           DIAGNOSE          PREDICT            │                 │                 │       KPIs / Trends     Root Cause       Forecast / Risk       Alerts            Evidence         Demand            │                 │                 │            └─────────────────┼─────────────────┘                              ▼                         SIMULATE                              │                   "What if I change X?"                              ▼                        RECOMMEND                              │                   Prioritized action                              ▼                           ACT                              │                         MEASURE                              │                       Learn / compare
+
+4.1 Intelligence layers
+
+Layer
+
+Responsibility
+
+Examples
+
+Data layer
+
+Reliable source of truth
+
+Transactions, products, customers, inventory, campaigns
+
+Analytics layer
+
+Known calculations
+
+Revenue, AOV, growth, RFM, cohorts
+
+Statistical layer
+
+Transparent signals
+
+Rolling averages, z-scores, trend and anomaly detection
+
+ML layer
+
+Validated predictive tasks
+
+Demand forecast, churn risk, product demand
+
+Decision layer
+
+Business reasoning
+
+Root cause, opportunity score, action priority, scenario simulation
+
+LLM layer
+
+Natural language and explanation
+
+Question understanding, tool selection, evidence-based response
+
+Experience layer
+
+Merchant workflow
+
+Command center, alerts, investigations, simulations, reports
+
+5. Complete Feature Catalog
+
+The following features form the proposed GrowthOS V2 scope. They should be implemented in priority order rather than simultaneously.
+
+Feature
+
+Business purpose
+
+Proposed capabilities
+
+1. Merchant Command Center
+
+Daily business cockpit
+
+Revenue, transactions, AOV, health score, critical issues, opportunities, forecast and recommended actions.
+
+2. Business Health Score
+
+Understand overall business condition
+
+Explainable score across revenue, growth, customers, inventory, retention and profitability.
+
+3. Transaction Analytics
+
+Inspect source activity
+
+Search, filters, status, pagination, date ranges, export and transaction drill-down.
+
+4. Product Intelligence
+
+Understand SKU/category behavior
+
+Fast movers, slow movers, growth/decline, contribution, discount behavior and product risk.
+
+5. Customer Intelligence
+
+Understand customer value
+
+RFM, repeat purchase, cohorts, CLV estimates, inactive segments and opportunity groups.
+
+6. Inventory Intelligence
+
+Prevent avoidable stock problems
+
+Demand velocity, days of cover, stockout risk, slow stock and reorder recommendations.
+
+7. Root-Cause Engine
+
+Explain performance changes
+
+Decompose revenue changes into volume, AOV, category, store, product, customer and time drivers.
+
+8. Opportunity Engine
+
+Find growth opportunities
+
+Cross-sell, win-back, underpenetrated categories, high-value segments and underperforming products.
+
+9. Forecasting
+
+Estimate future performance
+
+Revenue and demand forecasts with baseline comparison and uncertainty intervals.
+
+10. Smart Alerts
+
+Detect important changes early
+
+Threshold, rolling-statistic and later ML-based anomaly alerts.
+
+11. Decision Simulator
+
+Evaluate hypothetical actions
+
+Discount, price, inventory and campaign scenarios with expected trade-offs.
+
+12. Recommendation Engine
+
+Prioritize actions
+
+Impact, confidence, effort and risk-based ranking.
+
+13. Evidence Graph
+
+Build trust
+
+Every insight links to source metrics, comparisons, assumptions and supporting factors.
+
+14. Ask GrowthOS
+
+Natural-language business interface
+
+Questions translated into approved backend tools and evidence-grounded answers.
+
+15. Business Brief
+
+Daily executive summary
+
+What changed, what matters, risks, opportunities and recommended actions.
+
+16. Campaign Intelligence
+
+Plan and measure promotions
+
+Audience selection, draft creation, attribution windows and outcome comparison.
+
+17. Reports
+
+Share and archive findings
+
+Date-based reports, CSV/PDF exports and executive summaries.
+
+18. Data Quality Center
+
+Trust imported data
+
+Schema mapping, rejected rows, duplicates, missing fields and quality score.
+
+19. Audit & System Health
+
+Operate safely
+
+AI tool logs, API health, job status, latency, errors and security-sensitive events.
+
+20. Settings & Access
+
+Control workspace
+
+Business profile, roles, timezone, connected sources and permissions.
+
+6. Signature Workflows
+
+6.1 Revenue incident investigation
+
+Revenue ↓ 17%      ↓Compare against appropriate baseline      ↓Transaction volume ↓ 12%AOV ↓ 5%      ↓Identify major contributors      ↓Store 2 ↓ 28%Electronics ↓ 31%USB-C accessories ↓ 46%      ↓Check inventory      ↓Stock availability ↓ 63%      ↓Root-cause hypothesis:probable inventory shortage      ↓Forecast demand      ↓Simulate replenishment      ↓Recommend action
+
+The system should distinguish evidence from hypothesis. It must not label correlation as proven causation.
+
+6.2 Decision simulation
+
+Scenario:15% discount on selected products for 7 daysCurrent → ScenarioUnits sold:       420 → 507Revenue:          ₹8.4L → ₹9.1LGross margin:      31% → 27%Inventory:         72% → 51%Decision:Revenue rises, but margin falls.Recommendation:Apply the discount selectively to slow-moving products.
+
+6.3 Customer win-back opportunity
+
+1,240 customers in historical dataset        ↓312 inactive customers        ↓Segment by previous value        ↓94 high-potential customers        ↓Estimate opportunity        ↓Create target audience        ↓Draft campaign        ↓Merchant approval        ↓Measure attributed outcome
+
+7. AI Strategy — Use Models, Build the System
+
+The project does not require training a proprietary LLM. The recommended approach is to use a foundation-model API, such as OpenRouter, while building the domain-specific intelligence system around it.
+
+7.1 Recommended AI architecture
+
+React  ↓FastAPI /api/v1/ai/chat  ↓AI Orchestrator  ↓LLM API / OpenRouter  ↓Approved tool call  ↓GrowthOS analytics / ML / database services  ↓Structured evidence  ↓LLM explanation  ↓Validated response  ↓React
+
+7.2 What the LLM should do
+
+Interpret natural-language business questions.
+
+Select approved business tools.
+
+Ask for missing parameters when required.
+
+Summarize retrieved metrics.
+
+Explain trends and evidence in plain language.
+
+Interpret scenario results.
+
+Generate concise business briefs.
+
+Produce recommendation explanations.
+
+7.3 What the LLM should not do
+
+Directly execute arbitrary SQL.
+
+Invent numbers.
+
+Decide authorization.
+
+Retrieve another merchant's data.
+
+Receive raw personal/payment data unnecessarily.
+
+Perform deterministic KPI calculations when the backend can do them.
+
+Execute consequential actions without explicit merchant confirmation.
+
+7.4 Example tool registry
+
+Tool
+
+Purpose
+
+get_business_health
+
+Returns current health score and component metrics.
+
+get_revenue_summary
+
+Returns revenue, comparison and period metadata.
+
+get_revenue_breakdown
+
+Decomposes revenue change into approved dimensions.
+
+get_product_performance
+
+Returns product/category performance.
+
+get_customer_segments
+
+Returns RFM and customer opportunity segments.
+
+get_inventory_risk
+
+Returns stock coverage and risk indicators.
+
+get_forecast
+
+Returns forecast, horizon, model version and uncertainty.
+
+run_scenario
+
+Runs an approved business scenario.
+
+get_opportunities
+
+Returns ranked business opportunities.
+
+get_campaign_performance
+
+Returns measured campaign results when attribution exists.
+
+8. ML and Analytics Strategy
+
+8.1 Start without complex ML
+
+The first intelligence features should use SQL, Pandas, NumPy and transparent statistical methods. This keeps the project understandable and provides baselines against which later ML can be judged.
+
+Problem
+
+Version 1
+
+Later
+
+Revenue trend
+
+Period comparisons + rolling statistics
+
+Advanced forecasting if justified
+
+Anomaly
+
+Thresholds + z-score + rolling baseline
+
+Advanced anomaly model
+
+Customer segmentation
+
+RFM
+
+Clustering if measurable benefit exists
+
+Demand
+
+Moving/seasonal baseline
+
+Regression/boosting/time-series model
+
+Churn
+
+Business-defined inactivity rule
+
+Validated churn classifier
+
+Recommendations
+
+Business rules + scoring
+
+Learned ranking if enough data
+
+8.2 Forecast evaluation
+
+Use time-based train/test splits.
+
+Compare against naive and seasonal-naive baselines.
+
+Track MAE, RMSE and an appropriate percentage/weighted error metric.
+
+Show uncertainty intervals.
+
+Store model version and prediction horizon with every forecast.
+
+8.3 Churn risk
+
+Define churn according to the retail purchase cycle. Do not claim that the model knows who will churn. Evaluate precision, recall, PR-AUC and calibration, and account for the cost of false positives and false negatives.
+
+8.4 Anomaly detection
+
+Start with transparent rolling baselines and thresholds. Advanced methods should only be introduced if they reduce false alerts or identify meaningful events that simple methods miss.
+
+9. Root-Cause and Evidence Engine
+
+9.1 Why it matters
+
+This should be one of GrowthOS's main technical differentiators. The engine converts a high-level change into a ranked explanation tree.
+
+Metric changed    ↓Dimension decomposition    ├── Transaction volume    ├── AOV    ├── Store    ├── Category    ├── Product    ├── Customer segment    └── Time pattern            ↓Supporting signals            ↓Evidence object            ↓Hypothesis / explanation            ↓Confidence + limitations
+
+9.2 Evidence object
+
+{  "insight_type": "revenue_decline",  "period": "2026-09-22/2026-09-28",  "metric": "net_revenue",  "change": -0.142,  "drivers": [    {"dimension": "transactions", "change": -0.091},    {"dimension": "aov", "change": -0.056}  ],  "evidence": [...],  "confidence": 0.87,  "limitations": [...]}
+
+10. Opportunity Engine
+
+GrowthOS should identify not only problems but also underused sources of value. Opportunities should be ranked and evidence-linked.
+
+Opportunity
+
+Detection idea
+
+Output
+
+Cross-sell
+
+Product co-purchase patterns
+
+Products often bought together; estimated opportunity
+
+Win-back
+
+Inactive high-value customers
+
+Audience + potential value
+
+Slow-stock clearance
+
+Low velocity + high inventory
+
+Targeted discount recommendation
+
+Underpenetrated category
+
+High customer base but low category adoption
+
+Cross-sell opportunity
+
+Store recovery
+
+Store underperformance versus comparable stores
+
+Investigation + actions
+
+Price/discount
+
+Historical response and margin
+
+Scenario recommendation
+
+11. Inventory Intelligence
+
+Inventory intelligence makes GrowthOS substantially more retail-specific. It also connects forecasting to a concrete business decision.
+
+Stock Risk    =Demand Velocity× Forecasted Demand× Supplier Lead Time× Current Coverage Risk
+
+Days of cover.
+
+Stockout probability.
+
+Slow-moving inventory.
+
+Fast-moving inventory.
+
+Reorder recommendation.
+
+Seasonal demand pressure.
+
+Inventory impact of proposed discounts.
+
+12. Decision Simulator
+
+The simulator is a high-value hackathon feature because it demonstrates that GrowthOS is not only describing the past. It lets the merchant explore possible actions and trade-offs.
+
+Scenario type
+
+Inputs
+
+Outputs
+
+Discount
+
+Products, %, duration, audience
+
+Units, revenue, margin, inventory impact, risk
+
+Price change
+
+Product/category, price delta
+
+Demand/revenue/margin estimate
+
+Replenishment
+
+Units, timing
+
+Stockout risk, expected sales impact
+
+Campaign
+
+Audience, budget, expected response
+
+Projected reach, revenue, ROI range
+
+Inventory clearance
+
+Products, discount, duration
+
+Stock reduction, revenue, margin
+
+Modeling ruleThe simulator must clearly distinguish measured historical behavior from modeled assumptions. A scenario is an estimate, not a guarantee.
+
+13. Merchant Command Center and Daily Brief
+
+TODAY'S BUSINESS BRIEFRevenue                    ₹2.84L   ↑ 8.3%Transactions               1,240    ↑ 4.1%AOV                        ₹2,290   ↑ 4.0%Business Health             78/100CRITICAL• USB-C Hub stockout risk: 78%OPPORTUNITIES• Laptop accessory cross-sell: estimated ₹42K/month• High-value customer win-back segment identifiedFORECAST• Next 7 days: ₹18.2L–₹20.1L• Confidence: 81%RECOMMENDED ACTION• Replenish 24 USB-C Hubs• Target recent laptop buyers with accessory bundle[Investigate] [Simulate] [Review Action]
+
+14. Data Model
+
+Entity
+
+Important fields
+
+Purpose
+
+merchants
+
+merchant_id, business_name, category, timezone
+
+Tenant/business identity
+
+users
+
+user_id, identity, status
+
+Authentication identity
+
+merchant_users
+
+merchant_id, user_id, role
+
+Membership and authorization
+
+customers
+
+customer_id, merchant_id, external_id
+
+Customer identity
+
+products
+
+product_id, merchant_id, name, category, price
+
+Product catalog
+
+inventory_snapshots
+
+product_id, quantity, captured_at
+
+Inventory history
+
+transactions
+
+transaction_id, merchant_id, customer_id, status, amount, currency, created_at
+
+Sales records
+
+transaction_items
+
+transaction_id, product_id, quantity, price, discount
+
+Line-item detail
+
+campaigns
+
+campaign_id, merchant_id, audience, status
+
+Campaign lifecycle
+
+campaign_events
+
+campaign_id, customer_id, event_type, event_at, attributed_amount
+
+Attribution
+
+insights
+
+merchant_id, type, period, result, evidence, model_version
+
+Persisted intelligence
+
+scenario_runs
+
+merchant_id, scenario_type, inputs, outputs, assumptions
+
+Decision simulation history
+
+audit_logs
+
+merchant_id, user_id, action, timestamp, metadata
+
+Security and accountability
+
+14.1 Data rules
+
+Define revenue explicitly.
+
+Handle completed, failed, cancelled, refunded and pending transactions consistently.
+
+Store timestamps consistently and display in merchant timezone.
+
+Use idempotent imports and unique external transaction keys.
+
+Store currency explicitly.
+
+Pseudonymize customer identifiers where possible.
+
+Never aggregate unrelated currencies without a conversion policy.
+
+15. Data Ingestion and Quality Pipeline
+
+CSV / approved source        ↓File validation        ↓Schema detection / mapping        ↓Type inference        ↓Required-field validation        ↓Duplicate / idempotency checks        ↓Business-rule checks        ↓Import preview        ↓Merchant confirmation        ↓Normalization        ↓PostgreSQL        ↓Analytics refresh        ↓Insights / ML features
+
+Quality metric
+
+Example
+
+Rows received
+
+42,830
+
+Accepted
+
+41,972
+
+Duplicates
+
+612
+
+Invalid dates
+
+93
+
+Missing customer IDs
+
+153
+
+Data quality score
+
+94.2%
+
+16. Backend and API Architecture
+
+backend/├── api/│   ├── auth/│   ├── dashboard/│   ├── transactions/│   ├── customers/│   ├── products/│   ├── inventory/│   ├── forecasts/│   ├── insights/│   ├── scenarios/│   ├── campaigns/│   └── ai/├── domain/├── analytics/│   ├── kpi/│   ├── rfm/│   ├── cohorts/│   ├── anomaly/│   └── root_cause/├── intelligence/│   ├── opportunities/│   ├── recommendations/│   ├── health_score/│   └── scenarios/├── ml/│   ├── forecasting/│   ├── demand/│   └── churn/├── ai/│   ├── orchestrator/│   ├── tools/│   ├── prompts/│   ├── evidence/│   └── guardrails/├── infrastructure/│   ├── database/│   ├── auth/│   ├── queue/│   └── logging/└── tests/
+
+16.1 Core endpoints
+
+Method
+
+Endpoint
+
+Purpose
+
+GET
+
+/api/v1/dashboard/summary
+
+Core KPIs and business health
+
+GET
+
+/api/v1/analytics/revenue
+
+Time-bucketed revenue series
+
+GET
+
+/api/v1/transactions
+
+Paginated transaction search
+
+POST
+
+/api/v1/imports/transactions
+
+Validated import
+
+GET
+
+/api/v1/customers/segments
+
+RFM and segments
+
+GET
+
+/api/v1/inventory/risk
+
+Inventory risk
+
+GET
+
+/api/v1/forecast/revenue
+
+Forecast and uncertainty
+
+GET
+
+/api/v1/insights
+
+Root causes/opportunities
+
+POST
+
+/api/v1/scenarios
+
+Decision simulation
+
+POST
+
+/api/v1/campaigns
+
+Create campaign draft
+
+POST
+
+/api/v1/ai/chat
+
+Grounded AI interaction
+
+17. Frontend Product Architecture
+
+src/├── app/├── components/│   ├── MetricCard│   ├── TrendChart│   ├── InsightCard│   ├── EvidencePanel│   ├── ForecastChart│   ├── RiskBadge│   ├── ScenarioBuilder│   └── DataQualityPanel├── pages/│   ├── CommandCenter│   ├── Transactions│   ├── Products│   ├── Customers│   ├── Inventory│   ├── Insights│   ├── Forecast│   ├── Scenarios│   ├── Campaigns│   ├── Reports│   └── Settings├── services/├── hooks/├── types/└── utils/
+
+17.1 UX principle
+
+The interface should guide a merchant from signal to explanation to action. Avoid a wall of charts. Every important visual should answer a business question.
+
+18. Security, Privacy and AI Safety
+
+Area
+
+Required approach
+
+Authentication
+
+Secure sessions/tokens, trusted identity and recovery.
+
+Authorization
+
+Check role and merchant membership on every protected operation.
+
+Tenant isolation
+
+Every query scoped by merchant; test cross-tenant leakage.
+
+Data minimization
+
+Only collect data needed for the feature.
+
+File safety
+
+Validate type, size, schema and malformed rows.
+
+Secrets
+
+Environment/secret manager; never commit API keys.
+
+Encryption
+
+HTTPS and suitable managed encryption at rest.
+
+Auditability
+
+Record important security-sensitive actions without secrets.
+
+AI access
+
+Authorize before retrieval; use constrained tools.
+
+Prompt injection
+
+Treat prompts and uploaded text as untrusted.
+
+External actions
+
+Explicit merchant confirmation.
+
+AI safety ruleThe model should never be the authorization layer. Backend authorization happens first; only then can a permitted tool retrieve merchant-scoped data.
+
+19. Evaluation and Testing Strategy
+
+19.1 Analytics correctness
+
+Unit-test KPI formulas.
+
+Test refund/cancellation/discount edge cases.
+
+Test timezone boundaries.
+
+Compare backend metrics against independently calculated expected values.
+
+19.2 ML evaluation
+
+Component
+
+Metrics
+
+Forecasting
+
+MAE, RMSE, weighted/percentage error, calibration/coverage
+
+Churn
+
+Precision, recall, F1, PR-AUC, calibration
+
+Anomaly
+
+Precision, recall, false-positive rate, detection delay
+
+Recommendation
+
+Offline ranking checks + business-rule validity
+
+19.3 LLM evaluation
+
+Correct tool selection.
+
+Correct argument generation.
+
+Numerical faithfulness to retrieved evidence.
+
+No fabricated metrics.
+
+Correct refusal for unauthorized data.
+
+Resistance to prompt injection attempts.
+
+Response usefulness and clarity.
+
+19.4 System evaluation
+
+API latency.
+
+Import success/failure rates.
+
+Background-job reliability.
+
+Authentication and tenant-isolation tests.
+
+Error rates and logging coverage.
+
+20. Development Approach
+
+The recommended approach is a vertical-slice strategy. Build one complete, trustworthy business workflow before expanding breadth.
+
+PHASE A — Product/domain definition        ↓PHASE B — Data foundation        ↓PHASE C — Analytics engine        ↓PHASE D — Merchant UI        ↓PHASE E — Root cause + alerts        ↓PHASE F — Customer + inventory intelligence        ↓PHASE G — Forecasting        ↓PHASE H — Decision simulator        ↓PHASE I — Recommendations        ↓PHASE J — OpenRouter AI layer        ↓PHASE K — Security + evaluation        ↓PHASE L — Deployment + hackathon polish
+
+20.1 Development rule
+
+Build orderDo not start with the chatbot. Build the data contract and analytics engine first. The AI layer should sit on top of verified capabilities.
+
+21. Detailed Development Roadmap
+
+Phase
+
+Focus
+
+Main work
+
+Deliverable
+
+Phase 0
+
+Domain + product specification
+
+Finalize retail domain, user personas, KPIs, business rules, demo story and feature priorities.
+
+Domain model, PRD, wireframes
+
+Phase 1
+
+Repository + engineering foundation
+
+React/Vite/TS, FastAPI, PostgreSQL, Docker/dev environment, linting and tests.
+
+Running full-stack skeleton
+
+Phase 2
+
+Database + synthetic dataset
+
+Schema, migrations, realistic 12-month retail dataset, stores, customers, products, transactions, inventory.
+
+Persistent realistic data
+
+Phase 3
+
+Import + data quality
+
+CSV upload, mapping, validation, duplicate handling, import preview and quality score.
+
+Reliable ingestion pipeline
+
+Phase 4
+
+Core analytics
+
+Revenue, transactions, AOV, growth, product/category/store breakdowns.
+
+Verified analytics API
+
+Phase 5
+
+Command center
+
+Business health, charts, daily brief, transaction explorer and responsive UX.
+
+Usable merchant dashboard
+
+Phase 6
+
+Root cause + alerts
+
+Revenue decomposition, anomaly rules, evidence objects, investigation UI.
+
+Explainable intelligence
+
+Phase 7
+
+Customer intelligence
+
+RFM, cohorts, repeat rate, inactive/high-value segments and opportunity detection.
+
+Customer intelligence
+
+Phase 8
+
+Inventory intelligence
+
+Demand velocity, days of cover, stockout risk and reorder recommendations.
+
+Retail-specific risk engine
+
+Phase 9
+
+Forecasting
+
+Baseline forecast, time-based evaluation, uncertainty and model metadata.
+
+Measured prediction feature
+
+Phase 10
+
+Decision simulator
+
+Discount, replenishment and campaign scenarios with assumptions and outputs.
+
+Hackathon killer feature
+
+Phase 11
+
+Recommendation engine
+
+Impact/confidence/effort/risk ranking and action cards.
+
+Prioritized action system
+
+Phase 12
+
+OpenRouter AI
+
+Tool registry, orchestrator, structured outputs, evidence-grounded explanations.
+
+Ask GrowthOS
+
+Phase 13
+
+Security + hardening
+
+Auth, RBAC, tenant isolation, AI safeguards, rate limits, audit logs.
+
+Protected system
+
+Phase 14
+
+Testing + evaluation
+
+Analytics tests, model evaluation, LLM evaluation, security tests.
+
+Evidence of correctness
+
+Phase 15
+
+Deployment + observability
+
+Docker deployment, logging, metrics, background jobs, backups.
+
+Deployed portfolio product
+
+Phase 16
+
+Hackathon polish
+
+Seeded incident scenario, demo flow, architecture diagram, pitch, screenshots, README.
+
+Presentation-ready build
+
+22. Suggested 16-Week Personal Development Plan
+
+Week
+
+Theme
+
+Outcome
+
+Week 1
+
+Domain + UX
+
+Finalize retail domain, personas, KPIs, command-center wireframe.
+
+Week 2
+
+Backend skeleton
+
+FastAPI, PostgreSQL, SQLAlchemy/Alembic, configuration.
+
+Week 3
+
+Data
+
+Schema + synthetic retail dataset + seed scripts.
+
+Week 4
+
+Import
+
+CSV pipeline + data-quality center.
+
+Week 5
+
+Analytics
+
+Core KPI engine + transaction APIs.
+
+Week 6
+
+Frontend
+
+Command center + transaction explorer.
+
+Week 7
+
+Root cause
+
+Revenue decomposition + evidence model.
+
+Week 8
+
+Alerts
+
+Anomaly rules + insight feed.
+
+Week 9
+
+Customers
+
+RFM + cohorts + opportunity segments.
+
+Week 10
+
+Inventory
+
+Demand velocity + stock risk.
+
+Week 11
+
+Forecast
+
+Baseline forecast + evaluation.
+
+Week 12
+
+Simulator
+
+Discount/replenishment scenario engine.
+
+Week 13
+
+Recommendations
+
+Action ranking + daily business brief.
+
+Week 14
+
+AI
+
+OpenRouter + tool calling + grounded responses.
+
+Week 15
+
+Hardening
+
+Auth, RBAC, tenant isolation, tests, logs.
+
+Week 16
+
+Demo
+
+Deploy, seed incident, polish UI, prepare pitch and technical defense.
+
+23. Learning Roadmap for the Developer
+
+You do not need to know how to train LLMs before beginning. Learn only what the current development phase requires.
+
+Stage
+
+Learn
+
+Apply immediately
+
+1
+
+SQL + PostgreSQL
+
+KPIs and transaction analytics
+
+2
+
+Pandas + NumPy
+
+Data cleaning and analysis
+
+3
+
+Statistics
+
+Trends, distributions, anomalies
+
+4
+
+scikit-learn basics
+
+One validated prediction task
+
+5
+
+Time-series basics
+
+Forecasting
+
+6
+
+LLM APIs
+
+Basic Ask GrowthOS
+
+7
+
+Tool calling + structured outputs
+
+Controlled AI orchestration
+
+8
+
+Prompt injection + AI security
+
+AI guardrails
+
+9
+
+Evaluation
+
+Measure ML and LLM quality
+
+Practical principleDo not postpone the project until you 'know AI'. Build the deterministic system first and learn each AI/ML concept at the point where the product needs it.
+
+24. Hackathon-Winning Presentation Strategy
+
+24.1 Opening
+
+Start with a merchant incident rather than a feature list.
+
+“Revenue fell 17%.The merchant can see the number.But can they answer:Why did it happen?What is likely to happen next?What should they do?And is that action worth it?GrowthOS is designed to answer all four.”
+
+24.2 Live demo sequence
+
+Open the Merchant Command Center.
+
+Show a revenue decline alert.
+
+Click Investigate.
+
+Show root-cause decomposition.
+
+Open supporting evidence.
+
+Inspect inventory risk.
+
+Run a replenishment or discount scenario.
+
+Show recommendation ranking.
+
+Ask GrowthOS a natural-language question.
+
+Open the evidence behind the AI response.
+
+Show the action measurement concept.
+
+24.3 What judges should remember
+
+It is domain-specific.
+
+It has a real data pipeline.
+
+The analytics are deterministic and testable.
+
+ML is evaluated against baselines.
+
+AI is grounded in controlled tools.
+
+The system can reason about trade-offs.
+
+Security is part of the design.
+
+The demo tells one coherent business story.
+
+25. Technical Defense / Viva Preparation
+
+Question
+
+Answer
+
+Why not just use spreadsheets?
+
+GrowthOS standardizes definitions, automates recurring analysis, protects access, connects multiple intelligence layers and surfaces evidence-backed decisions in one workflow.
+
+Why use an LLM?
+
+For natural-language interaction, tool selection, explanation and summarization—not for deterministic KPI calculations or authorization.
+
+Why OpenRouter?
+
+It provides an API layer for accessing foundation models while allowing the application architecture to remain model-agnostic.
+
+Did you build your own LLM?
+
+No. The project focuses on building the domain-specific decision system around a foundation model.
+
+What is your AI contribution?
+
+Tool orchestration, domain prompts, structured outputs, evidence grounding, authorization, guardrails, evaluation and integration with analytics/ML services.
+
+Where is ML used?
+
+Only where a predictive task provides measurable value, such as forecasting or demand/churn risk.
+
+Why FastAPI?
+
+Python-friendly APIs make it straightforward to integrate analytics, ML and the LLM orchestration layer.
+
+Why PostgreSQL?
+
+Relational business data has strong consistency, joins, constraints and transactional behavior suitable for merchant analytics.
+
+How do you prevent hallucinations?
+
+The model receives approved structured tool results, not unrestricted database access; responses are constrained by evidence and the system should expose limitations.
+
+How do you prevent cross-merchant access?
+
+Backend authorization and merchant-scoped queries on every protected operation, backed by security tests.
+
+What is the hardest technical part?
+
+Turning heterogeneous business data into trustworthy, explainable decision signals and connecting those signals safely to an LLM.
+
+What makes this more than a dashboard?
+
+Root-cause diagnosis, forecasting, scenario simulation, recommendation ranking, evidence and a closed decision-measurement loop.
+
+26. Scope Control: What to Build vs Defer
+
+Build now / core
+
+Defer
+
+One retail domain
+
+All-industry support
+
+One reliable CSV format
+
+Dozens of integrations
+
+PostgreSQL + analytics engine
+
+Enterprise data warehouse
+
+RFM + anomaly + baseline forecast
+
+Deep learning
+
+Root-cause engine
+
+Fully autonomous agent
+
+Decision simulator
+
+Automatic real-world execution
+
+OpenRouter tool-calling assistant
+
+Custom LLM training
+
+Inventory intelligence
+
+Full supply-chain optimization
+
+RBAC + tenant isolation
+
+Enterprise SSO ecosystem
+
+Synthetic/demo dataset
+
+Production merchant scale
+
+Scope ruleA smaller system that completes the entire Observe → Diagnose → Predict → Simulate → Recommend loop is stronger than a large system with half-built features.
+
+27. Deployment and Operations
+
+Dockerize frontend/backend and supporting services where appropriate.
+
+Keep development and production environment variables separate.
+
+Store API keys in environment/secret management.
+
+Run database migrations explicitly.
+
+Use structured logs with request IDs.
+
+Monitor API latency, errors, background jobs and imports.
+
+Back up the database and test restoration.
+
+Use staged deployment and a seeded demo tenant.
+
+27.1 Demo environment
+
+Demo tenant ├── 3 stores ├── 8,000 customers ├── 1,500 products ├── ~50,000 transactions ├── 12 months of history ├── inventory snapshots └── seeded business incidents
+
+28. Business Model Hypotheses
+
+Model
+
+Possible value
+
+Freemium
+
+Core analytics with usage limits
+
+Subscription
+
+Longer history, multiple stores, advanced intelligence
+
+AI add-on
+
+Higher assistant/scenario usage
+
+B2B
+
+Merchant networks, accountants, service providers
+
+Enterprise
+
+Integrations, access control, support and custom reporting
+
+These are hypotheses, not proven business outcomes. Product-market fit should be tested with actual target users.
+
+29. Product Success Metrics
+
+Metric
+
+Why it matters
+
+Activation rate
+
+Can a new merchant import data and reach a meaningful dashboard?
+
+Time to first insight
+
+How quickly does the system produce something useful?
+
+Data quality
+
+Are imports trustworthy?
+
+Investigation completion
+
+Can a merchant move from alert to explanation?
+
+Action rate
+
+Do users act on recommendations?
+
+Simulation usage
+
+Do users test decisions before acting?
+
+Retention
+
+Does the product become useful repeatedly?
+
+Forecast quality
+
+Does forecasting beat simple baselines?
+
+AI groundedness
+
+Does the assistant stay faithful to evidence?
+
+System reliability
+
+Is the product dependable?
+
+30. Risks and Mitigations
+
+Risk
+
+Mitigation
+
+Poor data
+
+Validation, quality score and explicit limitations
+
+Overly broad MVP
+
+One domain and one complete vertical slice
+
+ML worse than baseline
+
+Baseline comparison and honest reporting
+
+LLM hallucination
+
+Controlled tools, structured evidence and evaluation
+
+Prompt injection
+
+Treat user/uploaded text as untrusted; constrain tools
+
+Cross-tenant leakage
+
+Authorization on every request + tests
+
+Too many alerts
+
+Threshold tuning and alert suppression
+
+False causal claims
+
+Use language such as 'likely contributor' and show evidence
+
+Simulator overconfidence
+
+Expose assumptions and uncertainty
+
+Feature bloat
+
+Prioritized roadmap and explicit deferred scope
+
+31. Final Product Definition
+
+GrowthOS V2GrowthOS is a domain-specific retail decision-intelligence platform. It ingests and validates business data, calculates trusted KPIs, detects meaningful changes, diagnoses likely drivers, identifies opportunities and inventory risks, forecasts future demand, simulates possible decisions, ranks recommended actions, and provides a grounded natural-language interface through a foundation model API. The merchant remains in control of consequential actions.
+
+31.1 Final architecture in one view
+
+┌─────────────────────────┐                   │     MERCHANT / USER      │                   └────────────┬────────────┘                                ↓                   ┌─────────────────────────┐                   │   React Command Center   │                   └────────────┬────────────┘                                ↓                   ┌─────────────────────────┐                   │ FastAPI + Auth + RBAC   │                   └────────────┬────────────┘                                ↓         ┌──────────────────────┼──────────────────────┐         ↓                      ↓                      ↓   DATA / ANALYTICS        INTELLIGENCE             AI         │                      │                      │   PostgreSQL              Root Cause            OpenRouter   KPI Engine              Opportunities         Orchestrator   RFM                     Recommendations       Tool Registry   Cohorts                 Health Score           Guardrails   Inventory               Simulator              Evidence         │                      │                      │         └──────────────────────┼──────────────────────┘                                ↓                     ┌─────────────────────┐                     │ Evidence + Decision │                     └──────────┬──────────┘                                ↓                       Merchant Action                                ↓                          Measurement
+
+32. Personal Project / Resume Positioning
+
+Suggested concise project description after the relevant features are genuinely implemented:
+
+Resume positioningBuilt GrowthOS, a domain-specific AI decision-intelligence platform for retail businesses combining deterministic KPI analytics, root-cause analysis, RFM customer intelligence, inventory-risk detection, demand forecasting, scenario simulation and grounded LLM tool calling through a FastAPI/PostgreSQL backend.
+
+Potential technical keywords:
+
+React, Vite, TypeScript
+
+FastAPI, Python, Pydantic
+
+PostgreSQL, SQLAlchemy, Alembic
+
+Pandas, NumPy, scikit-learn
+
+Forecasting, anomaly detection, RFM
+
+LLM API, OpenRouter, tool/function calling, structured outputs
+
+RBAC, multi-tenancy, tenant isolation
+
+Data validation, background jobs, Docker
+
+Automated testing, observability, evaluation
+
+33. Master Development Checklist
+
+Product
+
+□ Target domain finalized
+
+□ Primary user defined
+
+□ Core workflow defined
+
+□ Demo incident designed
+
+Data
+
+□ Schema created
+
+□ Synthetic dataset created
+
+□ Import validation working
+
+□ Data quality report working
+
+Backend
+
+□ FastAPI running
+
+□ Database migrations
+
+□ Tenant scoping
+
+□ Core endpoints
+
+□ Background jobs if needed
+
+Analytics
+
+□ Revenue
+
+□ Transactions
+
+□ AOV
+
+□ Growth
+
+□ RFM
+
+□ Root cause
+
+□ Opportunities
+
+Retail intelligence
+
+□ Inventory risk
+
+□ Days of cover
+
+□ Demand velocity
+
+□ Reorder recommendation
+
+ML
+
+□ Baseline forecast
+
+□ Evaluation
+
+□ Uncertainty
+
+□ Model metadata
+
+Simulator
+
+□ Discount scenario
+
+□ Replenishment scenario
+
+□ Assumptions
+
+□ Risk/uncertainty
+
+AI
+
+□ OpenRouter integration
+
+□ Tool registry
+
+□ Structured output
+
+□ Evidence grounding
+
+□ Guardrails
+
+□ AI evaluation
+
+Frontend
+
+□ Command center
+
+□ Investigation UI
+
+□ Evidence panel
+
+□ Simulator
+
+□ Ask GrowthOS
+
+□ Responsive states
+
+Security
+
+□ Authentication
+
+□ RBAC
+
+□ Tenant isolation
+
+□ Secrets
+
+□ Audit logs
+
+□ Prompt injection handling
+
+Quality
+
+□ Unit tests
+
+□ API tests
+
+□ Security tests
+
+□ ML evaluation
+
+□ LLM evaluation
+
+Deployment
+
+□ Docker
+
+□ Environment config
+
+□ Monitoring
+
+□ Backups
+
+□ Demo deployment
+
+Presentation
+
+□ Architecture diagram
+
+□ Demo story
+
+□ 2-minute pitch
+
+□ Technical viva answers
+
+□ README
+
+34. Source Basis and Accuracy Note
+
+This master document is based on the uploaded 'GrowthOS Complete Project Guide' and expands its proposed architecture, feature modules, AI/ML principles, security requirements and incremental roadmap into a more domain-specific retail product strategy.
+
+The source guide explicitly distinguishes the current React/Vite prototype with sample/demo data from future backend, database, analytics, ML, AI and deployment work. That distinction should remain true in all project documentation and presentations.
+
+The additions in this master document—especially the Indian retail specialization, Root-Cause Engine, Opportunity Engine, Inventory Intelligence, Decision Simulator, Evidence Graph, Business Health Score, recommendation ranking and expanded hackathon strategy—are proposed enhancements rather than claims that they already exist in the uploaded project.

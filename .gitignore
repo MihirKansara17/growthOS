@@ -1,0 +1,57 @@
+# ----------------------------------------------------------------------
+# Frontend (React + Vite)
+# ----------------------------------------------------------------------
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/.eslintcache
+frontend/coverage/
+
+# Vite environment variables (if any local overrides)
+frontend/.env.local
+frontend/.env.*.local
+
+# ----------------------------------------------------------------------
+# Backend (Python + FastAPI)
+# ----------------------------------------------------------------------
+# Virtual environment
+backend/venv/
+backend/env/
+backend/.venv/
+backend/env.bak/
+backend/venv.bak/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Database files
+*.db
+*.sqlite3
+backend/growthos.db
+
+# Environment variables
+backend/.env
+.env
+
+# Pytest / Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+*.log
+backend/logs/
+
+# ----------------------------------------------------------------------
+# System Files
+# ----------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+
+# IDEs / Editors
+.vscode/
+.idea/
+*.swp
+*.swo
