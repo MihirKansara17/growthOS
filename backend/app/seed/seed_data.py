@@ -26,6 +26,7 @@ def seed_database():
         description="High tech maturity chain with 3 stores in Mumbai, Bengaluru & Delhi, full barcodes, SKU inventory tracking & RFM phone tracking."
     )
     db.add(t1)
+    db.commit()
     
     stores_t1 = [
         Store(id="store_mumbai", tenant_id="tenant_apex", name="Mumbai Flagship", city="Mumbai"),
@@ -143,8 +144,10 @@ def seed_database():
         description="Single store Kirana using Excel & basic POS exports. Has itemized product records but no customer phone RFM tracking."
     )
     db.add(t2)
+    db.commit()
     s2 = Store(id="store_ganesh_main", tenant_id="tenant_ganesh", name="Shree Ganesh Kirana", city="Pune")
     db.add(s2)
+    db.commit()
     
     # TENANT 3: Basic Traditional Store ("Verma General Store")
     t3 = Tenant(
@@ -154,8 +157,10 @@ def seed_database():
         description="Traditional store maintaining basic category daily sales logs. Demonstrates graceful degradation and data quality upgrade path."
     )
     db.add(t3)
+    db.commit()
     s3 = Store(id="store_verma_main", tenant_id="tenant_verma", name="Verma Store", city="Jaipur")
     db.add(s3)
+    db.commit()
 
     # Alerts for Tenant 1
     db.add_all([
