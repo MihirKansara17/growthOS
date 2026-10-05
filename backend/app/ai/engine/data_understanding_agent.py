@@ -67,15 +67,25 @@ class DataUnderstandingAgent:
 
         try:
             response = self.llm.chat(system_prompt=system_prompt, user_prompt=user_prompt)
-            # Clean possible markdown block
-            if response.startswith("```json"):
-                response = response[7:]
-            if response.startswith("```"):
-                response = response[3:]
-            if response.endswith("```"):
-                response = response[:-3]
+            
+            import re
+            import ast
+            
+            # Extract the JSON block using regex to ignore conversational text
+            match = re.search(r'\{.*\}', response, re.DOTALL)
+            json_str = match.group(0) if match else response
+            
+            try:
+                data = json.loads(json_str)
+            except json.JSONDecodeError as je:
+                # LLMs (like Gemma) sometimes output Python dictionaries (single quotes, trailing commas)
+                try:
+                    # Translate JSON keywords to Python keywords for ast evaluation
+                    python_str = json_str.replace("null", "None").replace("false", "False").replace("true", "True")
+                    data = ast.literal_eval(python_str)
+                except Exception:
+                    raise RuntimeError(f"JSON Parse Error: {je}. Raw LLM Output: {response}")
 
-            data = json.loads(response.strip())
 
             result = DataUnderstandingResult(
                 query=query,
