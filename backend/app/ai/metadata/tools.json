@@ -1,0 +1,27 @@
+[
+    {
+        "name": "get_business_health",
+        "description": "Returns current health score and high-level component metrics of the business.",
+        "parameters": []
+    },
+    {
+        "name": "get_revenue_summary",
+        "description": "Returns top-line revenue, average order value, and percentage growth.",
+        "parameters": []
+    },
+    {
+        "name": "get_revenue_breakdown",
+        "description": "Decomposes revenue change into dimensions (volume effect vs price effect) and identifies root causes.",
+        "parameters": []
+    },
+    {
+        "name": "get_customer_segments",
+        "description": "Returns Recency, Frequency, Monetary (RFM) analysis and customer opportunity segments.",
+        "parameters": []
+    },
+    {
+        "name": "get_inventory_risk",
+        "description": "Returns stock coverage, items at stockout risk, and overstock warnings.",
+        "parameters": []
+    }
+]

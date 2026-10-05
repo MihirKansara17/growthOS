@@ -1,0 +1,146 @@
+{
+    "__description__": "GrowthOS Glossary — Maps natural-language retail slang and business terms to the exact system terminology understood by the AI pipeline. Used by MetadataManager and DataUnderstandingAgent at runtime.",
+
+    "footfall": "transaction volume",
+    "walk-ins": "transaction volume",
+    "how many customers came": "transaction volume",
+    "visitors": "transaction volume",
+
+    "ticket size": "average order value",
+    "aov": "average order value",
+    "average bill": "average order value",
+    "basket value": "average order value",
+    "per order value": "average order value",
+
+    "sales": "total revenue",
+    "revenue": "total revenue",
+    "turnover": "total revenue",
+    "income": "total revenue",
+    "earnings": "total revenue",
+    "total sales": "total revenue",
+    "how much did i sell": "total revenue",
+    "bikri": "total revenue",
+
+    "sales drop": "revenue variance via root cause analysis",
+    "why did sales drop": "root cause analysis",
+    "why did revenue fall": "root cause analysis",
+    "diagnose revenue": "root cause analysis",
+    "what happened to sales": "root cause analysis",
+    "revenue decline": "root cause analysis",
+    "sales down": "root cause analysis",
+    "why is revenue low": "root cause analysis",
+
+    "volume effect": "revenue change attributed to transaction count change",
+    "price mix effect": "revenue change attributed to average order value or product mix shift",
+
+    "growth": "revenue growth percentage period over period",
+    "growth rate": "revenue growth percentage period over period",
+    "are we growing": "revenue growth percentage period over period",
+
+    "health": "business health score (0-100)",
+    "health score": "business health score (0-100)",
+    "how is my business": "business health score (0-100)",
+    "business condition": "business health score (0-100)",
+    "overall performance": "business health score (0-100)",
+
+    "trend": "daily revenue trend over the selected period",
+    "daily sales trend": "daily revenue trend over the selected period",
+    "sales pattern": "daily revenue trend over the selected period",
+
+    "category breakdown": "revenue contribution by product category",
+    "category share": "revenue contribution by product category",
+    "which category sells most": "revenue contribution by product category",
+    "top categories": "revenue contribution by product category",
+
+    "dead stock": "overstocked items with days of cover greater than 60",
+    "slow moving": "overstocked items with days of cover greater than 60",
+    "non moving stock": "overstocked items with days of cover greater than 60",
+    "excess inventory": "overstocked items with days of cover greater than 60",
+
+    "stockout": "items at critical stockout risk with days of cover less than 7",
+    "out of stock": "items at critical stockout risk with days of cover less than 7",
+    "stock shortage": "items at critical stockout risk with days of cover less than 7",
+    "running low": "items at critical stockout risk with days of cover less than 7",
+    "stock khatam": "items at critical stockout risk with days of cover less than 7",
+
+    "reorder": "recommended reorder quantity for stockout risk items",
+    "replenish": "recommended reorder quantity for stockout risk items",
+    "restocking": "recommended reorder quantity for stockout risk items",
+
+    "days of cover": "number of days current stock will last at current sales velocity",
+    "stock cover": "number of days current stock will last at current sales velocity",
+    "how long will stock last": "number of days current stock will last at current sales velocity",
+
+    "sales velocity": "daily units sold per product based on recent transaction history",
+    "demand velocity": "daily units sold per product based on recent transaction history",
+    "fast moving": "products with high daily sales velocity",
+
+    "inventory health": "overall inventory status including stockout risk and overstock counts",
+    "stock report": "overall inventory status including stockout risk and overstock counts",
+    "warehouse status": "overall inventory status including stockout risk and overstock counts",
+
+    "churn": "customers with recency greater than 60 days classified as at-risk",
+    "inactive customers": "customers with recency greater than 60 days classified as at-risk",
+    "lost customers": "customers with recency greater than 60 days classified as at-risk",
+    "lapsed customers": "customers with recency greater than 60 days classified as at-risk",
+    "customers not buying": "customers with recency greater than 60 days classified as at-risk",
+
+    "best customers": "VIP Champions segment from RFM analysis with high frequency and monetary value",
+    "vip": "VIP Champions segment from RFM analysis with high frequency and monetary value",
+    "top customers": "VIP Champions segment from RFM analysis with high frequency and monetary value",
+    "loyal customers": "Active Loyal segment from RFM with recency under 30 days",
+    "repeat buyers": "Active Loyal segment from RFM with recency under 30 days",
+    "regulars": "Active Loyal segment from RFM with recency under 30 days",
+
+    "rfm": "Recency Frequency Monetary customer segmentation analysis",
+    "customer segments": "Recency Frequency Monetary customer segmentation analysis",
+    "customer analysis": "Recency Frequency Monetary customer segmentation analysis",
+    "customer value": "Recency Frequency Monetary customer segmentation analysis",
+    "customer intelligence": "Recency Frequency Monetary customer segmentation analysis",
+
+    "recency": "number of days since a customer last purchased",
+    "frequency": "total number of transactions by a customer",
+    "monetary": "total revenue generated by a customer",
+
+    "discount simulation": "what-if scenario modeling the impact of a percentage discount on revenue and margin",
+    "what if i give discount": "what-if scenario modeling the impact of a percentage discount on revenue and margin",
+    "simulate discount": "what-if scenario modeling the impact of a percentage discount on revenue and margin",
+
+    "price change simulation": "what-if scenario modeling the impact of a price change on demand and revenue",
+    "what if i raise price": "what-if scenario modeling the impact of a price change on demand and revenue",
+
+    "gross margin": "revenue minus cost of goods sold",
+    "margin": "revenue minus cost of goods sold",
+    "profit": "revenue minus cost of goods sold",
+    "profitability": "revenue minus cost of goods sold",
+
+    "cogs": "cost of goods sold estimated at 65 percent of revenue",
+
+    "upi": "payment method Unified Payments Interface",
+    "card": "payment method credit or debit card",
+    "cod": "payment method cash on delivery",
+    "cash": "payment method cash",
+    "payment methods": "transaction payment modes including UPI CARD COD CASH",
+
+    "store": "physical retail location belonging to a tenant",
+    "shop": "physical retail location belonging to a tenant",
+    "branch": "physical retail location belonging to a tenant",
+    "outlet": "physical retail location belonging to a tenant",
+
+    "sku": "Stock Keeping Unit unique product identifier",
+    "barcode": "scannable product barcode number",
+    "product": "item in the merchant product catalog",
+    "item": "item in the merchant product catalog",
+
+    "alert": "system generated warning about stockout risk or revenue drop or churn",
+    "warning": "system generated warning about stockout risk or revenue drop or churn",
+    "notification": "system generated warning about stockout risk or revenue drop or churn",
+
+    "tenant": "merchant business registered on the GrowthOS platform",
+    "merchant": "merchant business registered on the GrowthOS platform",
+    "business": "merchant business registered on the GrowthOS platform",
+
+    "diwali sales": "seasonal spike in transaction volume during October and November",
+    "holi sales": "seasonal spike in transaction volume during March",
+    "festival season": "seasonal spike in transaction volume during October November and March"
+}

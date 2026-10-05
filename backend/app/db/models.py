@@ -94,3 +94,13 @@ class Alert(Base):
     title = Column(String, nullable=False)
     description = Column(Text, nullable=False)
     created_at = Column(DateTime, default=datetime.datetime.utcnow)
+
+class AIChatHistory(Base):
+    __tablename__ = "ai_chat_history"
+    id = Column(String, primary_key=True, index=True)
+    tenant_id = Column(String, ForeignKey("tenants.id"), nullable=False)
+    user_query = Column(Text, nullable=False)
+    ai_response = Column(Text, nullable=False)
+    selected_tool = Column(String, nullable=True)
+    created_at = Column(DateTime, default=datetime.datetime.utcnow)
+
