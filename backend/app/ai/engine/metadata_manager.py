@@ -45,6 +45,8 @@ class MetadataManager:
         query_lower = query.lower()
         results = {}
         for term, meaning in self.glossary.items():
+            if term.startswith("__"):
+                continue
             if term.lower() in query_lower:
                 results[term] = meaning
         return results

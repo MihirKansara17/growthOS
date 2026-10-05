@@ -20,7 +20,6 @@ class LLMClient:
         }
 
         payload = {
-            "model": self.model,
             "temperature": temperature,
             "max_tokens": max_tokens,
             "messages": [
@@ -28,11 +27,19 @@ class LLMClient:
                 {"role": "user", "content": user_prompt}
             ]
         }
+        
+        # OpenRouter Fallback Support: If multiple models are comma-separated, pass as an array.
+        if "," in self.model:
+            payload["models"] = [m.strip() for m in self.model.split(",")]
+        else:
+            payload["model"] = self.model
 
         try:
             response = requests.post(self.base_url, headers=headers, json=payload, timeout=20)
             response.raise_for_status()
             data = response.json()
             return data["choices"][0]["message"]["content"]
+        except requests.exceptions.HTTPError as e:
+            raise RuntimeError(f"LLM API request failed: {e}. Details: {e.response.text}")
         except Exception as e:
             raise RuntimeError(f"LLM API request failed: {e}")

@@ -19,8 +19,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+from app.db.models import Base, engine
+
 @app.on_event("startup")
 def on_startup():
+    Base.metadata.create_all(bind=engine)
     seed_database()
 
 @app.get("/")
