@@ -33,6 +33,7 @@ def seed_database():
         Store(id="store_delhi", tenant_id="tenant_apex", name="Delhi Store", city="Delhi")
     ]
     db.add_all(stores_t1)
+    db.commit()
     
     categories = ["Packaged Foods", "Apparel & Fashion", "Electronics & Acc", "Personal Care", "Beverages"]
     products_t1 = []
