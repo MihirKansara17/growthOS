@@ -35,6 +35,6 @@ class InsightGenerator:
 
         try:
             response = self.llm.chat(system_prompt=system_prompt, user_prompt=user_prompt)
-            return response
+            return response or "The analysis was successful, but the AI model returned an empty explanation."
         except Exception as e:
             return f"I was able to run the analysis, but encountered an error generating the final explanation: {e}"

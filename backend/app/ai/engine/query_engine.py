@@ -67,12 +67,12 @@ class QueryEngine:
             db=db,
             tenant_id=tenant_id,
             user_query=query,
-            ai_response=insight,
+            ai_response=insight or "The analysis was successful, but the AI model returned an empty explanation.",
             selected_tool=understanding_result.selected_tool
         )
 
         return {
-            "answer": insight,
+            "answer": insight or "The analysis was successful, but the AI model returned an empty explanation.",
             "success": True,
             "mode": "TEXT_TO_TOOL",
             "tool_used": understanding_result.selected_tool,
