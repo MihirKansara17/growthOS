@@ -65,46 +65,55 @@ class DataUnderstandingAgent:
         {json.dumps(tools)}
         """
 
-        try:
-            response = self.llm.chat(system_prompt=system_prompt, user_prompt=user_prompt)
-            
-            import re
-            import ast
-            
-            # Extract the JSON block using regex to ignore conversational text
-            match = re.search(r'\{.*\}', response, re.DOTALL)
-            json_str = match.group(0) if match else response
-            
+        import re
+        import ast
+        
+        last_error = None
+        for attempt in range(3):
             try:
-                data = json.loads(json_str)
-            except json.JSONDecodeError as je:
-                # LLMs (like Gemma) sometimes output Python dictionaries (single quotes, trailing commas)
+                response = self.llm.chat(system_prompt=system_prompt, user_prompt=user_prompt)
+                
+                if not response:
+                    raise ValueError("The AI model returned an empty response. Please try again.")
+                
+                # Extract the JSON block using regex to ignore conversational text
+                match = re.search(r'\{.*\}', response, re.DOTALL)
+                json_str = match.group(0) if match else response
+                
                 try:
+                    data = json.loads(json_str)
+                except json.JSONDecodeError as je:
                     # Translate JSON keywords to Python keywords for ast evaluation
                     python_str = json_str.replace("null", "None").replace("false", "False").replace("true", "True")
                     data = ast.literal_eval(python_str)
-                except Exception:
-                    raise RuntimeError(f"JSON Parse Error: {je}. Raw LLM Output: {response}")
 
-
-            result = DataUnderstandingResult(
-                query=query,
-                selected_tool=data.get("selected_tool"),
-                timeframe=data.get("timeframe"),
-                filters=data.get("filters", []),
-                requires_clarification=data.get("requires_clarification", False),
-                clarification_question=data.get("clarification_question")
-            )
-            
-            # Update context if a tool was successfully chosen
-            if result.selected_tool:
-                self.conversation.update_context(
-                    selected_tool=result.selected_tool,
-                    timeframe=result.timeframe,
-                    filters=result.filters
+                result = DataUnderstandingResult(
+                    query=query,
+                    selected_tool=data.get("selected_tool"),
+                    timeframe=data.get("timeframe"),
+                    filters=data.get("filters", []),
+                    requires_clarification=data.get("requires_clarification", False),
+                    clarification_question=data.get("clarification_question")
                 )
+                
+                # Update context if a tool was successfully chosen
+                if result.selected_tool:
+                    self.conversation.update_context(
+                        selected_tool=result.selected_tool,
+                        timeframe=result.timeframe,
+                        filters=result.filters
+                    )
 
-            return result
+                return result
 
-        except Exception as e:
-            raise RuntimeError(f"Data understanding failed: {e}")
+            except Exception as e:
+                last_error = f"JSON Parse Error: {e}. Raw LLM Output: {response if 'response' in locals() else 'None'}"
+                # Loop will continue and ask the LLM again
+        
+        # If all 3 attempts fail, return a graceful fallback instead of crashing
+        return DataUnderstandingResult(
+            query=query,
+            selected_tool=None,
+            requires_clarification=True,
+            clarification_question="I'm having a bit of trouble connecting to my analytical brain. Could you please rephrase your question?"
+        )

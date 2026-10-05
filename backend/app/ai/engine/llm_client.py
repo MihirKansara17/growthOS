@@ -34,12 +34,24 @@ class LLMClient:
         else:
             payload["model"] = self.model
 
-        try:
-            response = requests.post(self.base_url, headers=headers, json=payload, timeout=20)
-            response.raise_for_status()
-            data = response.json()
-            return data["choices"][0]["message"]["content"]
-        except requests.exceptions.HTTPError as e:
-            raise RuntimeError(f"LLM API request failed: {e}. Details: {e.response.text}")
-        except Exception as e:
-            raise RuntimeError(f"LLM API request failed: {e}")
+        import time
+        
+        last_error = None
+        for attempt in range(3):
+            try:
+                response = requests.post(self.base_url, headers=headers, json=payload, timeout=20)
+                response.raise_for_status()
+                data = response.json()
+                content = data.get("choices", [{}])[0].get("message", {}).get("content")
+                if content is None:
+                    raise ValueError("OpenRouter returned a None content response.")
+                return content
+            except requests.exceptions.HTTPError as e:
+                last_error = f"HTTP Error: {e}. Details: {e.response.text}"
+            except Exception as e:
+                last_error = f"Request Error: {e}"
+            
+            # Sleep briefly before retrying
+            time.sleep(1.5)
+            
+        raise RuntimeError(f"LLM API request failed after 3 attempts. Last error: {last_error}")
